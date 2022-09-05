@@ -29,8 +29,7 @@ fn main() -> ! {
     }
 }
 
-fn delay_ms(ms: u16) {
-    let ticks = (F_CPU / 4000) as u16;
+fn delay_ms(ms: u32) {
     for _ in 0..(F_CPU / 4000 * ms) {
         unsafe {
             asm!("nop", "nop", "nop", "nop");
