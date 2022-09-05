@@ -4,12 +4,13 @@
 
 use avr_device::atmega328p::Peripherals;
 use core::arch::asm;
-use panic_halt as _;
+
+extern crate avr_std_stub;
 
 const F_CPU: u32 = 16_000_000;
 
-#[no_mangle]
-pub extern fn main() -> ! {
+#[avr_device::entry]
+fn main() -> ! {
     let peripherals = Peripherals::take().unwrap();
     let portb = peripherals.PORTB;
     portb.ddrb.modify(|r, w| unsafe { w.bits(r.bits() | (1 << 5))});
