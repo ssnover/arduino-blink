@@ -1,0 +1,9 @@
+[build]
+target = "avr-unknown-gnu-atmega328"
+
+[unstable]
+build-std = ["core", "compiler_builtins"]
+
+[env]
+AVR_CPU_FREQUENCY_HZ = "16000000"
+
